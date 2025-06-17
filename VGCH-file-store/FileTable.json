@@ -1,0 +1,7 @@
+{
+    "DN64Schematic": "N64 NUS-CPU-03-04.pdf",
+    "DN64MemoryMap" : "DETAILED_N64_MEMORY_MAP.txt",
+    "DSNESSchematic" : "snes_schematic_color.pdf",
+    "DSNESMemoryMap" : "SNESMem.txt",
+    "DSNESVisualMemoryMap" : "Snes_overall_map.png"
+}

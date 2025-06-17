@@ -1,0 +1,795 @@
+@prefix : <https://VGCHontology.com/Entities/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <https://VGCHontology.com/Entities/> .
+
+<https://VGCHontology.com/Entities> rdf:type owl:Ontology ;
+                                     owl:versionIRI <urn:absolute:0.1> .
+
+#################################################################
+#    Datatypes
+#################################################################
+
+###  http://www.w3.org/1999/02/22-rdf-syntax-ns#langString
+rdf:langString rdf:type rdfs:Datatype .
+
+
+###  http://www.w3.org/2001/XMLSchema#date
+xsd:date rdf:type rdfs:Datatype .
+
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  https://VGCHontology.com/Entities/hasCPU
+:hasCPU rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :hasComponent ;
+        owl:inverseOf :isCPUOf .
+
+
+###  https://VGCHontology.com/Entities/hasCommunityManual
+:hasCommunityManual rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasManual ;
+                    owl:inverseOf :isCommunityManualOf .
+
+
+###  https://VGCHontology.com/Entities/hasComponent
+:hasComponent rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isComponentOf .
+
+
+###  https://VGCHontology.com/Entities/hasComponentManual
+:hasComponentManual rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :hasManual ;
+                    owl:inverseOf :isComponentManualOf .
+
+
+###  https://VGCHontology.com/Entities/hasConsumerManual
+:hasConsumerManual rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :hasManual ;
+                   owl:inverseOf :isConsumerManualOf .
+
+
+###  https://VGCHontology.com/Entities/hasCreated
+:hasCreated rdf:type owl:ObjectProperty ;
+            owl:inverseOf :isCreatedBy ;
+            rdfs:domain :Manufacturer .
+
+
+###  https://VGCHontology.com/Entities/hasDocumentation
+:hasDocumentation rdf:type owl:ObjectProperty ;
+                  owl:inverseOf :isDocumentationOf .
+
+
+###  https://VGCHontology.com/Entities/hasGameAsset
+:hasGameAsset rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasDocumentation ;
+              owl:inverseOf :isGameAssetOf .
+
+
+###  https://VGCHontology.com/Entities/hasHardwareTest
+:hasHardwareTest rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :hasDocumentation ;
+                 owl:inverseOf :isHardwareTestOf ;
+                 rdfs:comment "Adaptation from example hardware runs because many developers have stated that they think tests are more important" .
+
+
+###  https://VGCHontology.com/Entities/hasManual
+:hasManual rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :hasDocumentation ;
+           owl:inverseOf :isManualOf .
+
+
+###  https://VGCHontology.com/Entities/hasProductionDocument
+:hasProductionDocument rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf :hasDocumentation ;
+                       owl:inverseOf :isProductionDocumentOf .
+
+
+###  https://VGCHontology.com/Entities/hasRegion
+:hasRegion rdf:type owl:ObjectProperty ;
+           rdfs:domain :ReleaseDate .
+
+
+###  https://VGCHontology.com/Entities/hasReleaseDate
+:hasReleaseDate rdf:type owl:ObjectProperty ;
+                owl:inverseOf :releaseDateOf .
+
+
+###  https://VGCHontology.com/Entities/hasSDK
+:hasSDK rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :hasDocumentation ;
+        owl:inverseOf :isSDKOf .
+
+
+###  https://VGCHontology.com/Entities/hasSchematic
+:hasSchematic rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :hasDocumentation ;
+              owl:inverseOf :isSchematicOf .
+
+
+###  https://VGCHontology.com/Entities/hasSuccessor
+:hasSuccessor rdf:type owl:ObjectProperty ;
+              owl:inverseOf :isSuccessorOf ;
+              rdfs:domain :Console ;
+              rdfs:range :Console .
+
+
+###  https://VGCHontology.com/Entities/isCPUOf
+:isCPUOf rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :isComponentOf ;
+         rdfs:domain :CPU ;
+         rdfs:range :Console .
+
+
+###  https://VGCHontology.com/Entities/isCommunityManualOf
+:isCommunityManualOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :isManualOf ;
+                     rdfs:domain :CommunityManual .
+
+
+###  https://VGCHontology.com/Entities/isComponentManualOf
+:isComponentManualOf rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf :isManualOf ;
+                     rdfs:domain :ComponentManual .
+
+
+###  https://VGCHontology.com/Entities/isComponentOf
+:isComponentOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf owl:topObjectProperty .
+
+
+###  https://VGCHontology.com/Entities/isConsumerManualOf
+:isConsumerManualOf rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :isManualOf ;
+                    rdfs:domain :ConsumerManual .
+
+
+###  https://VGCHontology.com/Entities/isCreatedBy
+:isCreatedBy rdf:type owl:ObjectProperty ;
+             rdfs:range :Manufacturer .
+
+
+###  https://VGCHontology.com/Entities/isDocumentationOf
+:isDocumentationOf rdf:type owl:ObjectProperty ;
+                   rdfs:domain :Documentation .
+
+
+###  https://VGCHontology.com/Entities/isGameAssetOf
+:isGameAssetOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isDocumentationOf ;
+               rdfs:domain :GameAsset .
+
+
+###  https://VGCHontology.com/Entities/isHardwareTestOf
+:isHardwareTestOf rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :isDocumentationOf ;
+                  rdfs:domain :HardwareTest .
+
+
+###  https://VGCHontology.com/Entities/isManualOf
+:isManualOf rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :isDocumentationOf ;
+            rdfs:domain :Manual .
+
+
+###  https://VGCHontology.com/Entities/isProductionDocumentOf
+:isProductionDocumentOf rdf:type owl:ObjectProperty ;
+                        rdfs:subPropertyOf :isDocumentationOf ;
+                        rdfs:domain :ProductionDocument .
+
+
+###  https://VGCHontology.com/Entities/isSDKOf
+:isSDKOf rdf:type owl:ObjectProperty ;
+         rdfs:subPropertyOf :isDocumentationOf ;
+         rdfs:domain :SDK .
+
+
+###  https://VGCHontology.com/Entities/isSchematicOf
+:isSchematicOf rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :isDocumentationOf ;
+               rdfs:domain :Schematic .
+
+
+###  https://VGCHontology.com/Entities/isSuccessorOf
+:isSuccessorOf rdf:type owl:ObjectProperty ;
+               rdfs:domain :Console ;
+               rdfs:range :Console .
+
+
+###  https://VGCHontology.com/Entities/releaseDateOf
+:releaseDateOf rdf:type owl:ObjectProperty .
+
+
+#################################################################
+#    Data properties
+#################################################################
+
+###  https://VGCHontology.com/Entities/hasConsoleDescription
+:hasConsoleDescription rdf:type owl:DatatypeProperty ;
+                       rdfs:subPropertyOf owl:topDataProperty ;
+                       rdfs:range rdf:langString .
+
+
+###  https://VGCHontology.com/Entities/hasConsoleSummary
+:hasConsoleSummary rdf:type owl:DatatypeProperty ;
+                   rdfs:subPropertyOf owl:topDataProperty ;
+                   rdfs:domain :Console ;
+                   rdfs:range rdf:langString .
+
+
+###  https://VGCHontology.com/Entities/hasDate
+:hasDate rdf:type owl:DatatypeProperty ;
+         rdfs:domain :ReleaseDate ;
+         rdfs:range xsd:date .
+
+
+###  https://VGCHontology.com/Entities/hasDescription
+:hasDescription rdf:type owl:DatatypeProperty ;
+                rdfs:domain :Documentation ;
+                rdfs:range rdf:langString .
+
+
+###  https://VGCHontology.com/Entities/hasDisplayName
+:hasDisplayName rdf:type owl:DatatypeProperty ;
+                rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :hasDisplayName ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onDataRange rdf:langString
+                            ] ;
+                rdfs:range rdf:langString .
+
+
+###  https://VGCHontology.com/Entities/hasDocumentationLink
+:hasDocumentationLink rdf:type owl:DatatypeProperty ;
+                      rdfs:domain :Documentation ;
+                      rdfs:range xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/hasDocumentationSource
+:hasDocumentationSource rdf:type owl:DatatypeProperty ;
+                        rdfs:subPropertyOf owl:topDataProperty ;
+                        rdfs:domain :Documentation ;
+                        rdfs:range xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/hasRegion
+:hasRegion rdf:type owl:DatatypeProperty ;
+           rdfs:range rdf:langString .
+
+
+###  https://VGCHontology.com/Entities/hasSpecification
+:hasSpecification rdf:type owl:DatatypeProperty .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  https://VGCHontology.com/Entities/Arcade
+:Arcade rdf:type owl:Class ;
+        rdfs:subClassOf :Console .
+
+
+###  https://VGCHontology.com/Entities/CPU
+:CPU rdf:type owl:Class ;
+     rdfs:subClassOf :Component .
+
+
+###  https://VGCHontology.com/Entities/CommunityManual
+:CommunityManual rdf:type owl:Class ;
+                 rdfs:subClassOf :Manual .
+
+
+###  https://VGCHontology.com/Entities/Component
+:Component rdf:type owl:Class .
+
+
+###  https://VGCHontology.com/Entities/ComponentManual
+:ComponentManual rdf:type owl:Class ;
+                 rdfs:subClassOf :Manual .
+
+
+###  https://VGCHontology.com/Entities/ComponentManufacturer
+:ComponentManufacturer rdf:type owl:Class ;
+                       rdfs:subClassOf :Manufacturer .
+
+
+###  https://VGCHontology.com/Entities/Console
+:Console rdf:type owl:Class .
+
+
+###  https://VGCHontology.com/Entities/ConsoleManufacturer
+:ConsoleManufacturer rdf:type owl:Class ;
+                     rdfs:subClassOf :Manufacturer .
+
+
+###  https://VGCHontology.com/Entities/ConsumerManual
+:ConsumerManual rdf:type owl:Class ;
+                rdfs:subClassOf :Manual .
+
+
+###  https://VGCHontology.com/Entities/Coprocessor
+:Coprocessor rdf:type owl:Class ;
+             rdfs:subClassOf :Component .
+
+
+###  https://VGCHontology.com/Entities/Documentation
+:Documentation rdf:type owl:Class .
+
+
+###  https://VGCHontology.com/Entities/GameAsset
+:GameAsset rdf:type owl:Class ;
+           rdfs:subClassOf :Documentation .
+
+
+###  https://VGCHontology.com/Entities/HandheldConsole
+:HandheldConsole rdf:type owl:Class ;
+                 rdfs:subClassOf :Console .
+
+
+###  https://VGCHontology.com/Entities/HardwareTest
+:HardwareTest rdf:type owl:Class ;
+              rdfs:subClassOf :Documentation .
+
+
+###  https://VGCHontology.com/Entities/HomeConsole
+:HomeConsole rdf:type owl:Class ;
+             rdfs:subClassOf :Console .
+
+
+###  https://VGCHontology.com/Entities/Manual
+:Manual rdf:type owl:Class ;
+        rdfs:subClassOf :Documentation .
+
+
+###  https://VGCHontology.com/Entities/Manufacturer
+:Manufacturer rdf:type owl:Class .
+
+
+###  https://VGCHontology.com/Entities/ProductionDocument
+:ProductionDocument rdf:type owl:Class ;
+                    rdfs:subClassOf :Documentation .
+
+
+###  https://VGCHontology.com/Entities/ReleaseDate
+:ReleaseDate rdf:type owl:Class .
+
+
+###  https://VGCHontology.com/Entities/SDK
+:SDK rdf:type owl:Class ;
+     rdfs:subClassOf :Documentation .
+
+
+###  https://VGCHontology.com/Entities/Schematic
+:Schematic rdf:type owl:Class ;
+           rdfs:subClassOf :Documentation .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  https://VGCHontology.com/Entities/DGameBoyCpuTest
+:DGameBoyCpuTest rdf:type owl:NamedIndividual ;
+                 :isHardwareTestOf :GameBoy ;
+                 :hasDisplayName "Game Boy CPU Tests"@en ;
+                 :hasDocumentationLink "https://github.com/adtennant/GameboyCPUTests"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DLibDragon
+:DLibDragon rdf:type owl:NamedIndividual ;
+            :isSDKOf :Nintendo_64 ;
+            :hasDisplayName "LibDragon"@en ;
+            :hasDocumentationLink "https://github.com/DragonMinded/libdragon"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DMotorola68000CpuTest
+:DMotorola68000CpuTest rdf:type owl:NamedIndividual ,
+                                :HardwareTest ;
+                       :isHardwareTestOf :Motorola68000 ;
+                       :hasDisplayName "Motorola 68000 CPU Test"@en ;
+                       :hasDocumentationLink "https://github.com/SingleStepTests/ProcessorTests/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DMotorola68000DesignPhilosophy
+:DMotorola68000DesignPhilosophy rdf:type owl:NamedIndividual ;
+                                :isDocumentationOf :Motorola68000 ;
+                                :hasDisplayName "Motorola 68000 Design philosophy"@en ;
+                                :hasDocumentationLink "http://www.easy68k.com/paulrsm/doc/dpbm68k1.htm"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DMotorola68000UserManual
+:DMotorola68000UserManual rdf:type owl:NamedIndividual ,
+                                   :ComponentManual ;
+                          :hasDisplayName "Motorola 68000 User manual" ;
+                          :hasDocumentationLink "https://archive.org/details/M68000PRM"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64Brew
+:DN64Brew rdf:type owl:NamedIndividual ;
+          :isCommunityManualOf :Nintendo_64 ;
+          :hasDisplayName "N64 Brew"@en ;
+          :hasDocumentationLink "https://n64brew.dev/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64CartridgeSaveTest
+:DN64CartridgeSaveTest rdf:type owl:NamedIndividual ,
+                                :HardwareTest ;
+                       :isHardwareTestOf :Nintendo_64 ;
+                       :hasDisplayName "N64 Cartridge Save Test"@en ;
+                       :hasDocumentationLink "https://github.com/meeq/SaveTest-N64"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64ControllerTest
+:DN64ControllerTest rdf:type owl:NamedIndividual ,
+                             :HardwareTest ;
+                    :isHardwareTestOf :Nintendo_64 ;
+                    :hasDisplayName "N64 Controller test"@en ;
+                    :hasDocumentationLink "https://github.com/Ryzee119/n64_controller_test/releases"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64CpuOverview
+:DN64CpuOverview rdf:type owl:NamedIndividual ;
+                 :isCommunityManualOf :Nintendo_64 ;
+                 :isDocumentationOf :VR4300 ;
+                 :hasDisplayName "CPU Overview"@en ;
+                 :hasDocumentationLink "https://en.wikibooks.org/wiki/N64_Programming/CPU_overview"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64Dev
+:DN64Dev rdf:type owl:NamedIndividual ;
+         :isCommunityManualOf :Nintendo_64 ;
+         :hasDisplayName "n64.dev"@en ;
+         :hasDocumentationLink "https://n64.dev/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64FpgaCore
+:DN64FpgaCore rdf:type owl:NamedIndividual ;
+              :isDocumentationOf :Nintendo_64 ;
+              :hasDisplayName "N64 FPGA Core"@en ;
+              :hasDocumentationLink "https://github.com/MiSTer-devel/N64_MiSTer"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64MemoryMap
+:DN64MemoryMap rdf:type owl:NamedIndividual ;
+               :isDocumentationOf :Nintendo_64 ;
+               :hasDisplayName "N64 Memory map"@en ;
+               :hasDocumentationLink "https://VGCHontology.com/DN64MemoryMap"^^xsd:anyURI ;
+               :hasDocumentationSource "https://ultra64.ca/files/tools/DETAILED_N64_MEMORY_MAP.txt"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64ReadTheDocs
+:DN64ReadTheDocs rdf:type owl:NamedIndividual ;
+                 :isCommunityManualOf :Nintendo_64 ;
+                 :hasDisplayName "N64 Read The Docs" ;
+                 :hasDocumentationLink "https://n64.readthedocs.io/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64Schematic
+:DN64Schematic rdf:type owl:NamedIndividual ,
+                        :Schematic ;
+               :isSchematicOf :Nintendo_64 ;
+               :hasDisplayName "N64 03/04 Schematic"@en ;
+               :hasDocumentationLink "https://VGCHontology.com/DN64Schematic"^^xsd:anyURI ;
+               :hasDocumentationSource "https://forums.modretro.com/threads/schematic-nus-cpu-04-ntsc-1996-1997.11227/page-2"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DN64SystemTest
+:DN64SystemTest rdf:type owl:NamedIndividual ,
+                         :HardwareTest ;
+                :isHardwareTestOf :Nintendo_64 ;
+                :hasDescription """Written in Rust.
+Tests the following features:
+
+- MFC0/DMFC0/MTC0/DMTC0: Some registers (e.g. EntryHi, BadVAddr) are expected to be 64 bit
+- LLD/LD/SC/SCD
+- Exceptions: Overflow (ADD, DADD etc), unaligned memory access (e.g. LW), TRAP instructions, BREAK, SYSCALL
+- TLB
+- Access (8, 16, 32, 64 bit) to RAM, ROM, SPMEM, PIF
+- RSP"""@en ;
+                :hasDisplayName "N64 System test" ;
+                :hasDocumentationLink "https://github.com/lemmy-64/n64-systemtest"^^xsd:anyURI ;
+                rdfs:comment """Written in Rust.
+Tests the following features:
+
+- MFC0/DMFC0/MTC0/DMTC0: Some registers (e.g. EntryHi, BadVAddr) are expected to be 64 bit
+- LLD/LD/SC/SCD
+- Exceptions: Overflow (ADD, DADD etc), unaligned memory access (e.g. LW), TRAP instructions, BREAK, SYSCALL
+- TLB
+- Access (8, 16, 32, 64 bit) to RAM, ROM, SPMEM, PIF
+- RSP""" .
+
+
+###  https://VGCHontology.com/Entities/DN64TestCartridge
+:DN64TestCartridge rdf:type owl:NamedIndividual ,
+                            :HardwareTest ;
+                   :hasDisplayName "N64 Test cartridge"@en ;
+                   :hasDocumentationLink "https://archive.org/details/n64_testcart"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DNeoGeoAesManual
+:DNeoGeoAesManual rdf:type owl:NamedIndividual ,
+                           :ConsumerManual ;
+                  :isConsumerManualOf :NeoGeoAes ;
+                  :hasDisplayName "Instruction Manual"@en ;
+                  :hasDocumentationLink "https://archive.org/details/Neo_Geo_AES_Manual_1990_SNK_US/mode/2up"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DNeoGeoAesSchematic
+:DNeoGeoAesSchematic rdf:type owl:NamedIndividual ;
+                     :isSchematicOf :NeoGeoAes ;
+                     :hasDocumentationLink "https://wiki.neogeodev.org/index.php?title=Schematics"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DSNESDevWiki
+:DSNESDevWiki rdf:type owl:NamedIndividual ;
+              :isCommunityManualOf :Super_Nintendo_Entertainment_System ;
+              :hasDisplayName "SNES Dev"@en ;
+              :hasDocumentationLink "https://snes.nesdev.org/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DSNESMemoryMap
+:DSNESMemoryMap rdf:type owl:NamedIndividual ;
+                :isDocumentationOf :Super_Nintendo_Entertainment_System ;
+                :hasDisplayName "Memory Map (Text)"@en ;
+                :hasDocumentationLink "https://VGCHontology.com/Entities/DSNESMemoryMap"^^xsd:anyURI ;
+                :hasDocumentationSource "https://www.romhacking.net/documents/173/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DSNESSchematic
+:DSNESSchematic rdf:type owl:NamedIndividual ,
+                         :Schematic ;
+                :isSchematicOf :Super_Nintendo_Entertainment_System ;
+                :hasDisplayName "SNES Schematic (Color)"@en ;
+                :hasDocumentationLink "https://VGCHontology.com/Entities/DSNESSchematic"^^xsd:anyURI ;
+                :hasDocumentationSource "https://gamesx.com/wiki/doku.php?id=schematics:console_related_schematics"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DSNESVisualMemoryMap
+:DSNESVisualMemoryMap rdf:type owl:NamedIndividual ;
+                      :isDocumentationOf :Super_Nintendo_Entertainment_System ;
+                      :hasDisplayName "SNES Memory Map (Visual)"@en ;
+                      :hasDocumentationLink "https://VGCHontology.com/Entities/DSNESMemoryMap"^^xsd:anyURI ;
+                      :hasDocumentationSource "https://snes.nesdev.org/wiki/Memory_map"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DSegaGenesisServiceManual
+:DSegaGenesisServiceManual rdf:type owl:NamedIndividual ;
+                           :isComponentManualOf :SegaGenesis ;
+                           :hasDisplayName "Genesis Service Manual"@en ;
+                           :hasDocumentationLink "https://archive.org/details/sega_service_manual_-_genesis_ii_-_mega_drive_ii_pal-b-i-g_rgb_no_001_june_1993/"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DSnesHardwareTest
+:DSnesHardwareTest rdf:type owl:NamedIndividual ;
+                   :isHardwareTestOf :Super_Nintendo_Entertainment_System ;
+                   :hasDisplayName "SNES Hardware Tests"@en ;
+                   :hasDocumentationLink "https://github.com/christopherpow/nes-test-roms"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/DVR4300UserManual
+:DVR4300UserManual rdf:type owl:NamedIndividual ,
+                            :Manual ;
+                   :isManualOf :VR4300 ;
+                   :hasDisplayName "VR4300 User Manual"@en ;
+                   :hasDocumentationLink "https://archive.org/details/bitsavers_necmips199icroprocessorUsersManual_15736077"^^xsd:anyURI .
+
+
+###  https://VGCHontology.com/Entities/GameBoy
+:GameBoy rdf:type owl:NamedIndividual ,
+                  :HandheldConsole ;
+         :isCreatedBy :Nintendo ;
+         :hasDisplayName "Game Boy" .
+
+
+###  https://VGCHontology.com/Entities/GameCube
+:GameCube rdf:type owl:NamedIndividual ,
+                   :HomeConsole ;
+          :isCreatedBy :Nintendo ;
+          :isSuccessorOf :Nintendo_64 ;
+          :hasDisplayName "GameCube"@en .
+
+
+###  https://VGCHontology.com/Entities/GameCubeAuRelease
+:GameCubeAuRelease rdf:type owl:NamedIndividual ;
+                   :releaseDateOf :GameCube ;
+                   :hasDate "2002-05-17"^^xsd:date ;
+                   :hasRegion "Australia"@en .
+
+
+###  https://VGCHontology.com/Entities/GameCubeEuRelease
+:GameCubeEuRelease rdf:type owl:NamedIndividual ;
+                   :releaseDateOf :GameCube ;
+                   :hasDate "2002-05-03"^^xsd:date ;
+                   :hasRegion "European Union"@en .
+
+
+###  https://VGCHontology.com/Entities/GameCubeJapanRelease
+:GameCubeJapanRelease rdf:type owl:NamedIndividual ,
+                               :ReleaseDate ;
+                      :releaseDateOf :GameCube ;
+                      :hasDate "2001-09-14"^^xsd:date ;
+                      :hasRegion "Japan"@en .
+
+
+###  https://VGCHontology.com/Entities/GameCubeNaRelease
+:GameCubeNaRelease rdf:type owl:NamedIndividual ;
+                   :releaseDateOf :GameCube ;
+                   :hasDate "2001-11-18"^^xsd:date ;
+                   :hasRegion "North America"@en .
+
+
+###  https://VGCHontology.com/Entities/Motorola
+:Motorola rdf:type owl:NamedIndividual ,
+                   :ComponentManufacturer ;
+          :hasDisplayName "Motorola" .
+
+
+###  https://VGCHontology.com/Entities/Motorola68000
+:Motorola68000 rdf:type owl:NamedIndividual ,
+                        :CPU ;
+               :isCreatedBy :Motorola ;
+               :hasDisplayName "Motorola 68000"@en ;
+               :hasSpecification "Address bus width: 24 bits"@en-au ,
+                                 "Clock speed: 4 MHz to 16.67 MHz"@en ,
+                                 "Data bus width: 16 bits"@en ,
+                                 "Endianness: big"@en ,
+                                 "Instruction set: 32 bits"@en .
+
+
+###  https://VGCHontology.com/Entities/N64AuRelease
+:N64AuRelease rdf:type owl:NamedIndividual ;
+              :releaseDateOf :Nintendo_64 ;
+              :hasDate "1997-03-01"^^xsd:date ;
+              :hasRegion "Australia"@en .
+
+
+###  https://VGCHontology.com/Entities/N64EuRelease
+:N64EuRelease rdf:type owl:NamedIndividual ;
+              :releaseDateOf :Nintendo_64 ;
+              :hasDate "1997-03-01"^^xsd:date ;
+              :hasRegion "European Union"@en .
+
+
+###  https://VGCHontology.com/Entities/N64JapanRelease
+:N64JapanRelease rdf:type owl:NamedIndividual ,
+                          :ReleaseDate ;
+                 :releaseDateOf :Nintendo_64 ;
+                 :hasDate "1996-06-23"^^xsd:date ;
+                 :hasRegion "Japan"@en .
+
+
+###  https://VGCHontology.com/Entities/N64NaRelease
+:N64NaRelease rdf:type owl:NamedIndividual ;
+              :releaseDateOf :Nintendo_64 ;
+              :hasDate "1996-09-29"^^xsd:date ;
+              :hasRegion "North America"@en .
+
+
+###  https://VGCHontology.com/Entities/NEC
+:NEC rdf:type owl:NamedIndividual ,
+              :ComponentManufacturer ;
+     :hasDisplayName "NEC"@en .
+
+
+###  https://VGCHontology.com/Entities/NeoGeo
+:NeoGeo rdf:type owl:NamedIndividual ,
+                 :ConsoleManufacturer ;
+        :hasDisplayName "Neo Geo"@en .
+
+
+###  https://VGCHontology.com/Entities/NeoGeoAes
+:NeoGeoAes rdf:type owl:NamedIndividual ,
+                    :HomeConsole ;
+           :hasCPU :Motorola68000 ,
+                   :ZilogZ80 ;
+           :isCreatedBy :NeoGeo ;
+           :hasDisplayName "Neo Geo AES"@en .
+
+
+###  https://VGCHontology.com/Entities/NeoGeoMvs
+:NeoGeoMvs rdf:type owl:NamedIndividual ,
+                    :Arcade ;
+           :hasCPU :Motorola68000 ,
+                   :ZilogZ80 ;
+           :isCreatedBy :NeoGeo ;
+           :hasDisplayName "Neo Geo MVS" .
+
+
+###  https://VGCHontology.com/Entities/Nintendo
+:Nintendo rdf:type owl:NamedIndividual ,
+                   :ConsoleManufacturer ;
+          :hasCreated :Nintendo_64 ,
+                      :Super_Nintendo_Entertainment_System ;
+          :hasDisplayName "Nintendo"@en .
+
+
+###  https://VGCHontology.com/Entities/Nintendo64Rcp
+:Nintendo64Rcp rdf:type owl:NamedIndividual ,
+                        :Coprocessor ;
+               :isComponentOf :Nintendo_64 ;
+               :isCreatedBy :NEC ;
+               :hasDisplayName "Reality Co-Processor"@en .
+
+
+###  https://VGCHontology.com/Entities/Nintendo_64
+:Nintendo_64 rdf:type owl:NamedIndividual ,
+                      :HomeConsole ;
+             :hasHardwareTest :DN64ControllerTest ;
+             :isSuccessorOf :Super_Nintendo_Entertainment_System ;
+             :hasConsoleDescription """Development of the N64 began in 1993 in collaboration with Silicon Graphics, initially codenamed Project Reality and later tested as the Ultra 64 arcade platform. The console was named for its 64-bit CPU. Although its design was largely finalized by mid-1995, the console’s release was delayed until 1996 to allow for the completion of the console's launch titles, Super Mario 64, Pilotwings 64, and the Japan-exclusive Saikyō Habu Shōgi.
+
+The N64’s original charcoal-gray console was later joined by several color variants. Certain games required the Expansion Pak to boost system RAM from 4 to 8 MB, improving both graphics and gameplay functionality. The console supported saved game storage either on cartridges or the optional Controller Pak accessory. The 64DD magnetic disc peripheral offered additional storage for game content and enabled the Randnet online service. However, due to a delayed launch, the 64DD was a commercial failure and was released exclusively in Japan.
+
+In 1996, Time magazine named the N64 its Machine of the Year, and in 2011, IGN ranked it as the ninth-greatest video game console of all time. Though the N64 sold over 32 million units globally, it was ultimately discontinued in 2002 following the release of its successor, the GameCube. While it was critically acclaimed, the N64 faced commercial challenges; its sales lagged behind the PlayStation, and commercially failed in both Japan and Europe, despite strong performance in the United States.
+
+Source: Wikipedia contributors. 2025. Nintendo 64 — Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Nintendo_64&oldid=1292819269"""@en ;
+             :hasConsoleSummary """The Nintendo 64 (N64) is a home video game console developed and marketed by Nintendo. It was released in Japan on June 23, 1996, in North America on September 29, 1996, and in Europe and Australia on March 1, 1997. As the successor to the Super Nintendo Entertainment System (SNES), the N64 was the last major home console to use ROM cartridges as its primary storage medium. As a fifth-generation console, the Nintendo 64 primarily competed with Sony's PlayStation and the Sega Saturn.
+
+Source: Wikipedia contributors. 2025. Nintendo 64 — Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Nintendo_64&oldid=1292819269"""@en ;
+             :hasDisplayName "Nintendo 64"@en .
+
+
+###  https://VGCHontology.com/Entities/Sega
+:Sega rdf:type owl:NamedIndividual ,
+               :ConsoleManufacturer ;
+      :hasDisplayName "Sega"@en .
+
+
+###  https://VGCHontology.com/Entities/SegaGenesis
+:SegaGenesis rdf:type owl:NamedIndividual ,
+                      :HomeConsole ;
+             :hasCPU :Motorola68000 ,
+                     :ZilogZ80 ;
+             :isCreatedBy :Sega ;
+             :hasDisplayName "Sega Genesis" ;
+             :hasSpecification "Audio RAM: 8 KB"@en ,
+                               "RAM: 64 KB"@en ,
+                               "VRAM: 64 KB" .
+
+
+###  https://VGCHontology.com/Entities/Super_Nintendo_Entertainment_System
+:Super_Nintendo_Entertainment_System rdf:type owl:NamedIndividual ,
+                                              :HomeConsole ;
+                                     :hasConsoleDescription """The Super NES is Nintendo's second programmable home console, following the Nintendo Entertainment System (NES). The console introduced advanced graphics and sound capabilities compared with other systems at the time, like the Sega Genesis. It was designed to accommodate the ongoing development of a variety of enhancement chips integrated into game cartridges to be more competitive into the next generation.
+
+The Super NES received largely positive reviews and was a global success, becoming the best-selling console of the 16-bit era after launching relatively late and facing intense competition from the Sega Genesis console in North America and Europe. Overlapping the NES's 61.9 million unit sales, the Super NES remained popular well into the 32-bit era, with 49.1 million units sold worldwide by the time it was discontinued in 2003. It continues to be popular among collectors and retro gamers, with new homebrew games and Nintendo's emulated rereleases, such as on the Virtual Console, the Super NES Classic Edition, Nintendo Classics; as well as several non-console emulators which operate on a desktop computer or mobile device, such as Snes9x.
+
+Source: Wikipedia contributors. 2025. Super Nintendo Entertainment System — Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Super_Nintendo_Entertainment_System&oldid=1292629417"""@en ;
+                                     :hasConsoleSummary """The Super Nintendo Entertainment System, commonly shortened to Super Nintendo, Super NES or SNES, is a 16-bit home video game console developed by Nintendo that was released in 1990 in Japan, 1991 in North America, 1992 in Europe and Oceania and 1993 in South America. In Japan, it is called the Super Famicom (SFC). In South Korea, it is called the Super Comboy and was distributed by Hyundai Electronics. The system was released in Brazil on August 30, 1993, by Playtronic. In Russia and CIS, the system was distributed by Steepler from 1994 until 1996. Although each version is essentially the same, several forms of regional lockout prevent cartridges for one version from being used in other versions.
+
+Source: Wikipedia contributors. 2025. Super Nintendo Entertainment System — Wikipedia, The Free Encyclopedia. Retrieved from https://en.wikipedia.org/w/index.php?title=Super_Nintendo_Entertainment_System&oldid=1292629417"""@en ;
+                                     :hasDisplayName "Super Nintendo Entertainment System"@en .
+
+
+###  https://VGCHontology.com/Entities/VR4300
+:VR4300 rdf:type owl:NamedIndividual ;
+        :isCPUOf :Nintendo_64 ;
+        :isCreatedBy :NEC ;
+        :hasDisplayName "VR4300"@en ;
+        :hasSpecification "Clock speed: 93.75 MHz"@en .
+
+
+###  https://VGCHontology.com/Entities/Zilog
+:Zilog rdf:type owl:NamedIndividual ,
+                :ComponentManufacturer ;
+       :hasDisplayName "Zilog"@en .
+
+
+###  https://VGCHontology.com/Entities/ZilogZ80
+:ZilogZ80 rdf:type owl:NamedIndividual ,
+                   :CPU ;
+          :isCreatedBy :Zilog ;
+          :hasDisplayName "Zilog Z80" ;
+          :hasSpecification "Address bus width: 16 bits"@en ,
+                            "Clock speed: 2.5 MHz to 8 MHz"@en ,
+                            "Instruction set: Z80"@en ,
+                            "Data bus width: 8 bits" .
+
+
+###  Generated by the OWL API (version 4.5.29.2024-05-13T12:11:03Z) https://github.com/owlcs/owlapi

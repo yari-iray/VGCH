@@ -1,0 +1,5 @@
+{
+    "fileStoreServer" : "https://vgch-file-store.vercel.app",
+    "vercel" : "https://vgch-file-store.vercel.app",
+    "local": "http://localhost:3000"
+}
